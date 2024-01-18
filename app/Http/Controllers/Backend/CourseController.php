@@ -24,4 +24,9 @@ class CourseController extends Controller
         $category = Category::latest()->get();
         return view('instructor.course.add_course', compact('category'));
     }// end method
+
+    public function GetSubCategory($category_id){
+        $subcategory = SubCategory::where('category_id',$category_id)->orderBy('subcategory_name','ASC')->get();
+        return json_encode($subcategory);
+    }
 }

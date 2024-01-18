@@ -40,6 +40,7 @@
                                             class='bx bxs-category'></i></span>
                                 </div>
                             </div>
+
                             <div class="form-group col-md-6">
                                 <label for="course_title" class="form-label">Course Title</label>
                                 <div class="position-relative input-icon">
@@ -71,6 +72,128 @@
                                         placeholder="Video" accept="video/mp4, video/webm">
                                     <span class="position-absolute top-50 translate-middle-y"><i
                                             class='bx bxs-category'></i></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-6"></div>
+
+                            <div class="form-group col-md-6">
+                                <label for="category_id" class="form-label">Course Category</label>
+                                <select name="category_id" id="category_id" class="form-select mb-3"
+                                    aria-label="Default Select Example">
+                                    <option selected="" disabled>Open this select menu</option>
+                                    @foreach ($category as $cate)
+                                        <option value="{{ $cate->id }}">{{ $cate->category_name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="subcategory_id" class="form-label">Course Subcategory</label>
+                                <select name="subcategory_id" id="subcategory_id" class="form-select mb-3"
+                                    aria-label="Default Select Example">
+                                    <option></option>
+
+                                </select>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="label" class="form-label">Course Label</label>
+                                <select name="label" id="label" class="form-select mb-3"
+                                    aria-label="Default Select Example">
+                                    <option selected="" disabled>Open this select menu</option>
+                                    <option value="Begginer">Begginer</option>
+                                    <option value="Middle">Middle</option>
+                                    <option value="Advance">Advance</option>
+                                </select>
+                            </div>
+
+
+                            <div class="form-group col-md-6">
+                                <label for="certificate" class="form-label">Certificate Available</label>
+                                <select name="certificate" id="certificate" class="form-select mb-3"
+                                    aria-label="Default Select Example">
+                                    <option selected="" disabled>Open this select menu</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <label for="selling_price" class="form-label">Course Price</label>
+                                <div class="position-relative input-icon">
+                                    <input type="text" class="form-control" name="selling_price" id="selling_price"
+                                        placeholder="Course Price">
+                                    <span class="position-absolute top-50 translate-middle-y"><i
+                                            class='bx bxs-category'></i></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <label for="discount_price" class="form-label">Discount Price</label>
+                                <div class="position-relative input-icon">
+                                    <input type="text" class="form-control" name="discount_price" id="discount_price"
+                                        placeholder="Discount Price">
+                                    <span class="position-absolute top-50 translate-middle-y"><i
+                                            class='bx bxs-category'></i></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <label for="duration" class="form-label">Duration</label>
+                                <div class="position-relative input-icon">
+                                    <input type="text" class="form-control" name="duration" id="duration"
+                                        placeholder="Duration">
+                                    <span class="position-absolute top-50 translate-middle-y"><i
+                                            class='bx bxs-category'></i></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <label for="resources" class="form-label">Resources</label>
+                                <div class="position-relative input-icon">
+                                    <input type="text" class="form-control" name="resources" id="resources"
+                                        placeholder="Resources">
+                                    <span class="position-absolute top-50 translate-middle-y"><i
+                                            class='bx bxs-category'></i></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <label for="prerequisites" class="form-label">Prerequisites</label>
+                                <div class="position-relative">
+                                    <textarea rows="2" class="form-control" name="prerequisites" id="prerequisites" placeholder="Prerequisites"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label for="description" class="form-label">Description</label>
+                                <div class="position-relative">
+                                    <textarea class="form-control" name="description" id="myeditorinstance"></textarea>
+                                </div>
+                            </div>
+                            <hr />
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input id="bestseller" name="bestseller" type="checkbox"
+                                            class="form-check-input" value="1">
+                                        <label for="bestseller"> Best Seller</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input id="featured" name="featured" type="checkbox" class="form-check-input"
+                                            value="1">
+                                        <label for="featured"> Featured</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input id="highestrated" name="highestrated" type="checkbox"
+                                            class="form-check-input" value="1">
+                                        <label for="highestrated"> Highest Rated</label>
+                                    </div>
                                 </div>
                             </div>
 
@@ -133,6 +256,32 @@
                     $('#showImage').attr('src', e.target.result);
                 }
                 reader.readAsDataURL(e.target.files['0']);
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('select[name="category_id"]').on('change', function() {
+                var category_id = $(this).val();
+                if (category_id) {
+                    $.ajax({
+                        url: "{{ url('/subcategory/ajax') }}/" + category_id,
+                        type: "GET",
+                        dataType: "json",
+                        success: function(data) {
+                            $('select[name="subcategory_id"]').html('');
+                            var d = $('select[name="subcategory_id"]').empty();
+                            $.each(data, function(key, value) {
+                                $('select[name="subcategory_id"]').append(
+                                    '<option value="' + value.id + '">' + value
+                                    .subcategory_name + '</option>');
+                            });
+                        },
+                    });
+                } else {
+                    alert('danger');
+                }
             });
         });
     </script>
