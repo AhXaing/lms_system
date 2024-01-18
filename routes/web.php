@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\CourseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -82,6 +83,7 @@ Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.
 Route::get('/become-instructor', [AdminController::class, 'BecomeInstructor'])->name('become-instructor');
 Route::post('/instructor-register', [AdminController::class, 'InstructorRegister'])->name('instructor-register');
 
+
 //instructor group middleware
 Route::middleware(['auth','roles:instructor'])->group(function(){
     Route::get('/instructor/dashboard', [InstructorController::class, 'InstructorDashboard'])->name('instructor.dashboard');
@@ -91,8 +93,11 @@ Route::middleware(['auth','roles:instructor'])->group(function(){
     Route::get('/instructor/change-password', [InstructorController::class, 'InstructorChangePassword'])->name('instructor.change-password');
     Route::post('/instructor/update-password-instructor', [InstructorController::class, 'InstructorUpdatePassword'])->name('instructor.update-password-instructor');
 
+    // Course route
+    Route::controller(CourseController::class)->group(function(){
+        Route::get('/all-instructor','AllInstructor')->name('all-instructor');
+    }); // end Course route
 
-    //
 });
 // end group instructor middleware
 
