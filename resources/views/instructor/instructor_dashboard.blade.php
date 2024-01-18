@@ -25,7 +25,13 @@
     <link rel="stylesheet" href="{{ asset('backend/assets/css/dark-theme.css') }}" />
     <link rel="stylesheet" href="{{ asset('backend/assets/css/semi-dark.css') }}" />
     <link rel="stylesheet" href="{{ asset('backend/assets/css/header-colors.css') }}" />
+
+    {{-- data table --}}
+    <link href="{{ asset('backend/assets/plugins/datatable/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" />
+
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+
+
     <title>Instructor Dashboard</title>
 
 </head>
@@ -247,9 +253,28 @@
     <script src="{{ asset('backend/assets/js/index.js') }}"></script>
     <!--app JS-->
     <script src="{{ asset('backend/assets/js/app.js') }}"></script>
+
+    {{-- validate --}}
+    <script src="{{ asset('backend/assets/js/validate.min.js') }}"></script>
+
+    {{-- sweet alert --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="{{ asset('backend/assets/js/sweetalert.js') }}"></script>
+
+    {{-- data table --}}
+    <script src="{{ asset('backend/assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable();
+        });
+    </script>
+
     <script>
         new PerfectScrollbar(".app-container")
     </script>
+
+
 
     {{-- toastr message --}}
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>

@@ -34,7 +34,7 @@
                     <div class="menu-title">Manage Course</div>
                 </a>
                 <ul>
-                    <li> <a href="ecommerce-products.html"><i class='bx bx-radio-circle'></i>All Course</a>
+                    <li> <a href="{{ route('all-course') }}"><i class='bx bx-radio-circle'></i>All Course</a>
                     </li>
 
                 </ul>
