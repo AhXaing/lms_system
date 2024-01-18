@@ -67,7 +67,14 @@ Route::middleware(['auth','roles:admin'])->group(function(){
         Route::get('/edit-subcategory/{id}','EditSubCategories')->name('edit-subcategory');
         Route::post('/update-subcategory','UpdateSubCategories')->name('update-subcategory');
         Route::get('/delete-subcategory/{id}','DeleteSubCategories')->name('delete-subcategory');
-    });
+    }); // end all sub category route
+
+    // all instructor route
+    Route::controller(AdminController::class)->group(function(){
+        Route::get('/all-instructor','AllInstructor')->name('all-instructor');
+        Route::post('/update-user-status','UpdateUserStatus')->name('update-user-status');
+
+    }); // end instructor route
 });
 // end group admin middleware
 
