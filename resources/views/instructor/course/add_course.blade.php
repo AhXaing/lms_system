@@ -27,7 +27,7 @@
                 <div class="card">
                     <div class="card-body p-4">
                         <h5 class="mb-4">Create Course</h5>
-                        <form action="{{ route('store-category') }}" id="frmCategory" class="row g-3" method="POST"
+                        <form action="{{ route('store-course') }}" id="frmCourse" class="row g-3" method="POST"
                             enctype="multipart/form-data">
                             @csrf
 
@@ -52,7 +52,7 @@
                             </div>
 
                             <div class="form-group col-md-6">
-                                <label for="course_image" class="form-label">Image</label>
+                                <label for="image" class="form-label">Image</label>
                                 <div class="position-relative input-icon">
                                     <input type="file" class="form-control" name="course_image" id="image"
                                         placeholder="course image">
@@ -66,7 +66,7 @@
                             </div>
 
                             <div class="form-group col-md-6">
-                                <label for="course_title" class="form-label">Course Intro Video</label>
+                                <label for="video" class="form-label">Course Intro Video</label>
                                 <div class="position-relative input-icon">
                                     <input type="file" class="form-control" name="video" id="video"
                                         placeholder="Video" accept="video/mp4, video/webm">
@@ -171,6 +171,23 @@
                                     <textarea class="form-control" name="description" id="myeditorinstance"></textarea>
                                 </div>
                             </div>
+
+                            <p>Course Gaols</p>
+                            <!--   //////////// Goal Option /////////////// -->
+                            <div class="row add_item">
+                                <div class="col-md-10">
+                                    <div class="mb-3">
+                                        <label for="goals" class="form-label"> Goals </label>
+                                        <input type="text" name="goal_name[]" id="goals" class="form-control"
+                                            placeholder="Goals ">
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-2" style="padding-top: 30px;">
+                                    <a class="btn btn-success btn-sm addeventmore"><i class='bx bx-plus'></i></a>
+                                </div>
+                            </div> <!---end row-->
+                            <!--   //////////// End Goal Option /////////////// -->
+
                             <hr />
 
                             <div class="row">
@@ -214,23 +231,63 @@
         <!--end row-->
     </div>
 
+
+    <!--========== Start of add multiple class with ajax ==============-->
+    <div style="visibility: hidden">
+        <div class="whole_extra_item_add" id="whole_extra_item_add">
+            <div class="whole_extra_item_delete" id="whole_extra_item_delete">
+                <div class="container mt-2">
+                    <div class="row">
+                        <div class="form-group col-md-10">
+                            <label for="goals">Goals</label>
+                            <input type="text" name="goal_name[]" id="goals" class="form-control"
+                                placeholder="Goals  ">
+                        </div>
+                        <div class="form-group col-md-2" style="padding-top: 20px">
+                            <span class="btn btn-success btn-sm addeventmore"><i class='bx bx-plus'></i></span>
+                            <span class="btn btn-danger btn-sm removeeventmore"><i class='bx bx-trash'></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!----For Section-------->
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#frmCategory').validate({
+            var counter = 0;
+            $(document).on("click", ".addeventmore", function() {
+                var whole_extra_item_add = $("#whole_extra_item_add").html();
+                $(this).closest(".add_item").append(whole_extra_item_add);
+                counter++;
+            });
+            $(document).on("click", ".removeeventmore", function(event) {
+                $(this).closest("#whole_extra_item_delete").remove();
+                counter -= 1
+            });
+        });
+    </script>
+    <!--========== End of add multiple class with ajax ==============-->
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#frmCourse').validate({
                 rules: {
-                    category_name: {
+                    course_name: {
                         required: true,
                     },
-                    image: {
+                    course_title: {
                         required: true,
                     },
                 },
                 messages: {
-                    category_name: {
-                        required: 'Please Enter category name',
+                    course_name: {
+                        required: 'Please Enter course name',
                     },
-                    image: {
-                        required: 'Please select category image',
+                    course_title: {
+                        required: 'Please select course title',
                     },
                 },
                 errorElement: 'span',
