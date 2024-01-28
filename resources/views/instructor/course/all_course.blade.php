@@ -45,12 +45,11 @@
                                             alt="" />
                                     </td>
                                     <td>{{ $item->course_name }}</td>
-                                    <td>{{ $item->category_id }}</td>
+                                    <td>{{ $item['category']['category_name'] }}</td>
                                     <td>{{ $item->selling_price }}</td>
                                     <td>{{ $item->discount_price }}</td>
                                     <td>
-                                        <a href="{{ route('edit-category', $item->id) }}"
-                                            class="btn btn-info btn-sm">Edit</a>
+                                        <a href="{{ route('edit-course', $item->id) }}" class="btn btn-info btn-sm">Edit</a>
                                         <a href="{{ route('delete-category', $item->id) }}" id="delete"
                                             class="btn btn-danger btn-sm">Delete</a>
                                     </td>

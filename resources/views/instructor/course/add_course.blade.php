@@ -16,9 +16,7 @@
                 </nav>
             </div>
             <div class="ms-auto">
-                <div class="btn-group">
-                    <a href="{{ route('add-category') }}" type="button" class="btn btn-primary">Add Category</a>
-                </div>
+
             </div>
         </div>
         <!--end breadcrumb-->
@@ -64,7 +62,7 @@
                                     class="rounded-circle p-1 bg-primary" width="110">
                             </div>
 
-                            {{-- <div class="form-group col-md-6">
+                            <div class="form-group col-md-6">
                                 <label for="video" class="form-label">Course Intro Video</label>
                                 <div class="position-relative input-icon">
                                     <input type="file" class="form-control" name="video" id="video"
@@ -72,7 +70,7 @@
                                     <span class="position-absolute top-50 translate-middle-y"><i
                                             class='bx bxs-category'></i></span>
                                 </div>
-                            </div> --}}
+                            </div>
 
                             <div class="form-group col-md-6"></div>
 

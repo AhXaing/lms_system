@@ -48,12 +48,10 @@ class CourseController extends Controller
         // end image
 
         // video
-        // $manager1 = new ImageManager(new Driver());
-        // $video_name = hexdec(uniqid()).".".$request->file('video')->getClientOriginalExtension();
-        // $video = $manager1->read($request->file('video'));
-
-        // $video->move(base_path('public/upload/course/video/'.$video_name));
-        // $save_video = 'upload/course/video/'.$video_name;
+        $video = $request->file('video');
+        $videoName = time().'.'.$video->getClientOriginalExtension();
+        $video->move(public_path('upload/course/video/'),$videoName);
+        $save_video = 'upload/course/video/'.$videoName;
         // end video
 
         $course_id = Course::insertGetId([
@@ -64,7 +62,7 @@ class CourseController extends Controller
             'course_name'                       => $request->course_name,
             'course_name_slug'                  => strtolower(str_replace(' ','-',$request->course_name)),
             'description'                       => $request->description,
-            // 'video'                             => $save_video,
+            'video'                             => $save_video,
             'course_image'                      => $save_url,
             'label'                             => $request->label,
             'duration'                          => $request->duration,
@@ -101,4 +99,11 @@ class CourseController extends Controller
 
 
     }//end method
+
+    public function EditCourse($id){
+        $course = Course::find($id);
+        $category = Category::latest()->get();
+        $subcategory = SubCategory::latest()->get();
+        return view('instructor.course.edit_course', compact('course','category','subcategory'));
+    } //end method
 }
