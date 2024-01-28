@@ -31,9 +31,10 @@ class CourseController extends Controller
     }//end course
 
     public function StoreCourse(Request $request){
-        $request->validate([
-            'video'         => 'required|mimes:mp4|max:10000',
-        ]);
+        
+        // $request->validate([
+        //     'video'         => 'required|mimes:mp4|max:10000',
+        // ]);
 
         // image
         $manager = new ImageManager(new Driver());
@@ -47,12 +48,12 @@ class CourseController extends Controller
         // end image
 
         // video
-        $manager1 = new ImageManager(new Driver());
-        $video_name = hexdec(uniqid()).".".$request->file('video')->getClientOriginalExtension();
-        $video = $manager1->read($request->file('video'));
+        // $manager1 = new ImageManager(new Driver());
+        // $video_name = hexdec(uniqid()).".".$request->file('video')->getClientOriginalExtension();
+        // $video = $manager1->read($request->file('video'));
 
-        $video->move(base_path('public/upload/course/video/'.$video_name));
-        $save_video = 'upload/course/video/'.$video_name;
+        // $video->move(base_path('public/upload/course/video/'.$video_name));
+        // $save_video = 'upload/course/video/'.$video_name;
         // end video
 
         $course_id = Course::insertGetId([
@@ -61,9 +62,9 @@ class CourseController extends Controller
             'instructor_id'                     => Auth::user()->id,
             'course_title'                      => $request->course_title,
             'course_name'                       => $request->course_name,
-            'categocourse_name_slugry_id'       => strtolower(str_replace(' ','-',$request->course_name)),
+            'course_name_slug'                  => strtolower(str_replace(' ','-',$request->course_name)),
             'description'                       => $request->description,
-            'video'                             => $save_video,
+            // 'video'                             => $save_video,
             'course_image'                      => $save_url,
             'label'                             => $request->label,
             'duration'                          => $request->duration,
@@ -74,10 +75,11 @@ class CourseController extends Controller
             'prerequisites'                     => $request->prerequisites,
             'bestseller'                        => $request->bestseller,
             'featured'                          => $request->featured,
-            'selhighestratedling_price'         => $request->highestrated,
+            'highestrated'                      => $request->highestrated,
             'status'                            => 1,
             'created_at'                        => Carbon::now(),
         ]);
+        
 
         // course Goals add form
         $goals = Count($request->goal_name);
