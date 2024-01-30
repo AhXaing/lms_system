@@ -104,6 +104,145 @@ class CourseController extends Controller
         $course = Course::find($id);
         $category = Category::latest()->get();
         $subcategory = SubCategory::latest()->get();
-        return view('instructor.course.edit_course', compact('course','category','subcategory'));
+        $CourseGoal = Course_goal::where('course_id',$id)->get();
+        return view('instructor.course.edit_course', compact('course','category','subcategory','CourseGoal'));
     } //end method
+
+    public function UpdateCourse(Request $request){
+        
+       $cid = $request->course_id;
+
+
+        Course::find($cid)->update([
+            'category_id'                       => $request->category_id,
+            'subcategory_id'                    => $request->subcategory_id,
+            'instructor_id'                     => Auth::user()->id,
+            'course_title'                      => $request->course_title,
+            'course_name'                       => $request->course_name,
+            'course_name_slug'                  => strtolower(str_replace(' ','-',$request->course_name)),
+            'description'                       => $request->description,
+            'label'                             => $request->label,
+            'duration'                          => $request->duration,
+            'resources'                         => $request->resources,
+            'certificate'                       => $request->certificate,
+            'selling_price'                     => $request->selling_price,
+            'discount_price'                    => $request->discount_price,
+            'prerequisites'                     => $request->prerequisites,
+            'bestseller'                        => $request->bestseller,
+            'featured'                          => $request->featured,
+            'highestrated'                      => $request->highestrated
+        ]);
+        
+        $notification = array(
+            'message'       => 'Course updated Successfully.',
+            'alert-type'    => 'success'
+        );
+        return redirect()->route('all-course')->with($notification);
+
+    }//end method
+
+    public function UpdateCourseImage(Request $request){
+        $course_id = $request->id;
+        $oldImage = $request->old_image;
+
+        // image
+        $manager = new ImageManager(new Driver());
+        $name_gen = hexdec(uniqid()).".".$request->file('course_image')->getClientOriginalExtension();
+
+        $img = $manager->read($request->file('course_image'));
+        $img = $img->resize(370,246);
+
+        $img->toJpeg(80)->save(base_path('public/upload/course/thumbnail/'.$name_gen));
+        $save_url = 'upload/course/thumbnail/'.$name_gen;
+        // end image
+
+        if(file_exists($oldImage)){
+            unlink($oldImage);
+        }
+
+        Course::find($course_id)->update([
+            'course_image' => $save_url,
+            'updated_at'   => Carbon::now(),
+        ]);
+
+        $notification = array(
+            'message'       => 'Course image updated Successfully.',
+            'alert-type'    => 'success'
+        );
+        return redirect()->back()->with($notification);
+
+    }//end method
+
+    public function UpdateCourseVideo(Request $request){
+        $course_id = $request->vid;
+        $oldVideo = $request->old_video;
+
+        // video
+        $video = $request->file('video');
+        $videoName = time().'.'.$video->getClientOriginalExtension();
+        $video->move(public_path('upload/course/video/'),$videoName);
+        $save_video = 'upload/course/video/'.$videoName;
+        // end video
+
+        if(file_exists($oldVideo)){
+            unlink($oldVideo);
+        }
+
+        Course::find($course_id)->update([
+            'video' => $save_video,
+            'updated_at'   => Carbon::now(),
+        ]);
+
+        $notification = array(
+            'message'       => 'Course video updated Successfully.',
+            'alert-type'    => 'success'
+        );
+        return redirect()->back()->with($notification);
+    }//end method
+
+    public function UpdateCourseGoals(Request $request){
+        $gid = $request->id;
+
+        if($request->goal_name == NULL){
+            return redirect()->back();
+        }else{
+            Course_goal::where('course_id',$gid)->delete();
+
+             // course Goals add form
+            $goals = Count($request->goal_name);
+           
+            for($i = 0; $i < $goals; $i++){
+                $gcount = new Course_goal();
+                $gcount->course_id = $gid;
+                $gcount->goal_name = $request->goal_name[$i];
+                $gcount->save();
+            };          
+            // end for
+        }; //end if     
+        $notification = array(
+            'message'       => 'Course Goals updated Successfully.',
+            'alert-type'    => 'success'
+        );
+        return redirect()->back()->with($notification);
+
+    }//end method
+
+    public function DeleteCourse($id){
+        $course = Course::find($id);
+        unlink($course->course_image);
+        unlink($course->video);
+
+        Course::find($id)->delete();
+
+        $goalsData = Course_goal::where('course_id',$id)->get();
+        foreach($goalsData as $item){
+            $item->goal_name;
+            Course_goal::where('course_id',$id)->delete();
+        }
+         $notification = array(
+            'message'       => 'Course deleted Successfully.',
+            'alert-type'    => 'success'
+        );
+        return redirect()->back()->with($notification);
+    }//end method
 }

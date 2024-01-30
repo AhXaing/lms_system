@@ -50,7 +50,7 @@
                                     <td>{{ $item->discount_price }}</td>
                                     <td>
                                         <a href="{{ route('edit-course', $item->id) }}" class="btn btn-info btn-sm">Edit</a>
-                                        <a href="{{ route('delete-category', $item->id) }}" id="delete"
+                                        <a href="{{ route('delete-course', $item->id) }}" id="delete"
                                             class="btn btn-danger btn-sm">Delete</a>
                                     </td>
 

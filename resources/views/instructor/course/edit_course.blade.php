@@ -21,13 +21,14 @@
         </div>
         <!--end breadcrumb-->
         <div class="row">
-            <div class="col-xl-6 mx-auto">
+            <div>
                 <div class="card">
                     <div class="card-body p-4">
                         <h5 class="mb-4">Edit Course</h5>
-                        <form action="{{ route('store-course') }}" id="frmCourse" class="row g-3" method="POST"
+                        <form action="{{ route('update-course') }}" id="frmCourse" class="row g-3" method="POST"
                             enctype="multipart/form-data">
                             @csrf
+                            <input type="hidden" name="course_id" value="{{ $course->id }}" />
                             <div class="form-group col-md-6">
                                 <label for="course_name" class="form-label">Course Name</label>
                                 <div class="position-relative input-icon">
@@ -48,31 +49,6 @@
                                 </div>
                             </div>
 
-                            <div class="form-group col-md-6">
-                                <label for="image" class="form-label">Image</label>
-                                <div class="position-relative input-icon">
-                                    <input type="file" class="form-control" name="course_image" id="image"
-                                        placeholder="course image" value="{{ $course->course_image }}">
-                                    <span class="position-absolute top-50 translate-middle-y"><i
-                                            class='bx bx-image'></i></span>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <img id="showImage" src="{{ url('upload/no-image.png') }}"
-                                    class="rounded-circle p-1 bg-primary" width="110">
-                            </div>
-
-                            <div class="form-group col-md-6">
-                                <label for="video" class="form-label">Course Intro Video</label>
-                                <div class="position-relative input-icon">
-                                    <input type="file" class="form-control" name="video" id="video"
-                                        placeholder="Video" accept="video/mp4, video/webm">
-                                    <span class="position-absolute top-50 translate-middle-y"><i
-                                            class='bx bxs-category'></i></span>
-                                </div>
-                            </div>
-
-                            <div class="form-group col-md-6"></div>
 
                             <div class="form-group col-md-6">
                                 <label for="category_id" class="form-label">Course Category</label>
@@ -80,7 +56,9 @@
                                     aria-label="Default Select Example">
                                     <option selected="" disabled>Open this select menu</option>
                                     @foreach ($category as $cate)
-                                        <option value="{{ $cate->id }}">{{ $cate->category_name }}</option>
+                                        <option value="{{ $cate->id }}"
+                                            {{ $cate->id == $course->category_id ? 'selected' : '' }}>
+                                            {{ $cate->category_name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -89,7 +67,12 @@
                                 <label for="subcategory_id" class="form-label">Course Subcategory</label>
                                 <select name="subcategory_id" id="subcategory_id" class="form-select mb-3"
                                     aria-label="Default Select Example">
-                                    <option></option>
+                                    <option selected="" disabled>Open this select menu</option>
+                                    @foreach ($subcategory as $subcate)
+                                        <option value="{{ $subcate->id }}"
+                                            {{ $subcate->id == $course->subcategory_id ? 'selected' : '' }}>
+                                            {{ $subcate->subcategory_name }}</option>
+                                    @endforeach
 
                                 </select>
                             </div>
@@ -99,20 +82,23 @@
                                 <select name="label" id="label" class="form-select mb-3"
                                     aria-label="Default Select Example">
                                     <option selected="" disabled>Open this select menu</option>
-                                    <option value="Begginer">Begginer</option>
-                                    <option value="Middle">Middle</option>
-                                    <option value="Advance">Advance</option>
+                                    <option value="Begginer" {{ $course->label == 'Begginer' ? 'selected' : '' }}>
+                                        Begginer</option>
+                                    <option value="Middle" {{ $course->label == 'Middle' ? 'selected' : '' }}>Middle
+                                    </option>
+                                    <option value="Advance" {{ $course->label == 'Advance' ? 'selected' : '' }}>
+                                        Advance</option>
                                 </select>
                             </div>
-
 
                             <div class="form-group col-md-6">
                                 <label for="certificate" class="form-label">Certificate Available</label>
                                 <select name="certificate" id="certificate" class="form-select mb-3"
                                     aria-label="Default Select Example">
                                     <option selected="" disabled>Open this select menu</option>
-                                    <option value="Yes">Yes</option>
-                                    <option value="No">No</option>
+                                    <option value="Yes" {{ $course->certificate == 'Yes' ? 'selected' : '' }}>Yes
+                                    </option>
+                                    <option value="No" {{ $course->certificate == 'No' ? 'selected' : '' }}>No</option>
                                 </select>
                             </div>
 
@@ -120,7 +106,7 @@
                                 <label for="selling_price" class="form-label">Course Price</label>
                                 <div class="position-relative input-icon">
                                     <input type="text" class="form-control" name="selling_price" id="selling_price"
-                                        placeholder="Course Price">
+                                        placeholder="Course Price" value="{{ $course->selling_price }}">
                                     <span class="position-absolute top-50 translate-middle-y"><i
                                             class='bx bxs-category'></i></span>
                                 </div>
@@ -130,7 +116,7 @@
                                 <label for="discount_price" class="form-label">Discount Price</label>
                                 <div class="position-relative input-icon">
                                     <input type="text" class="form-control" name="discount_price" id="discount_price"
-                                        placeholder="Discount Price">
+                                        placeholder="Discount Price" value="{{ $course->discount_price }}">
                                     <span class="position-absolute top-50 translate-middle-y"><i
                                             class='bx bxs-category'></i></span>
                                 </div>
@@ -140,7 +126,7 @@
                                 <label for="duration" class="form-label">Duration</label>
                                 <div class="position-relative input-icon">
                                     <input type="text" class="form-control" name="duration" id="duration"
-                                        placeholder="Duration">
+                                        placeholder="Duration" value="{{ $course->duration }}">
                                     <span class="position-absolute top-50 translate-middle-y"><i
                                             class='bx bxs-category'></i></span>
                                 </div>
@@ -150,7 +136,7 @@
                                 <label for="resources" class="form-label">Resources</label>
                                 <div class="position-relative input-icon">
                                     <input type="text" class="form-control" name="resources" id="resources"
-                                        placeholder="Resources">
+                                        placeholder="Resources" value="{{ $course->resources }}">
                                     <span class="position-absolute top-50 translate-middle-y"><i
                                             class='bx bxs-category'></i></span>
                                 </div>
@@ -158,32 +144,16 @@
 
                             <div class="form-group col-md-12">
                                 <label for="prerequisites" class="form-label">Prerequisites</label>
-                                <div class="position-relative">
-                                    <textarea rows="2" class="form-control" name="prerequisites" id="prerequisites" placeholder="Prerequisites"></textarea>
+                                <div class="position-relative" \>
+                                    <textarea rows="2" class="form-control" name="prerequisites" id="prerequisites" placeholder="Prerequisites">{{ $course->prerequisites }}</textarea>
                                 </div>
                             </div>
                             <div class="form-group col-md-12">
                                 <label for="description" class="form-label">Description</label>
                                 <div class="position-relative">
-                                    <textarea class="form-control" name="description" id="myeditorinstance"></textarea>
+                                    <textarea class="form-control" name="description" id="myeditorinstance">{!! $course->description !!}</textarea>
                                 </div>
                             </div>
-
-                            <p>Course Gaols</p>
-                            <!--   //////////// Goal Option /////////////// -->
-                            <div class="row add_item">
-                                <div class="col-md-10">
-                                    <div class="mb-3">
-                                        <label for="goals" class="form-label"> Goals </label>
-                                        <input type="text" name="goal_name[]" id="goals" class="form-control"
-                                            placeholder="Goals ">
-                                    </div>
-                                </div>
-                                <div class="form-group col-md-2" style="padding-top: 30px;">
-                                    <a class="btn btn-success btn-sm addeventmore"><i class='bx bx-plus'></i></a>
-                                </div>
-                            </div> <!---end row-->
-                            <!--   //////////// End Goal Option /////////////// -->
 
                             <hr />
 
@@ -191,21 +161,23 @@
                                 <div class="col-md-4">
                                     <div class="form-check">
                                         <input id="bestseller" name="bestseller" type="checkbox"
-                                            class="form-check-input" value="1">
+                                            class="form-check-input" value="1"
+                                            {{ $course->bestseller == '1' ? 'checked' : '' }}>
                                         <label for="bestseller"> Best Seller</label>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-check">
                                         <input id="featured" name="featured" type="checkbox" class="form-check-input"
-                                            value="1">
+                                            value="1" {{ $course->featured == '1' ? 'checked' : '' }}>
                                         <label for="featured"> Featured</label>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-check">
                                         <input id="highestrated" name="highestrated" type="checkbox"
-                                            class="form-check-input" value="1">
+                                            class="form-check-input" value="1"
+                                            {{ $course->highestrated == '1' ? 'checked' : '' }}>
                                         <label for="highestrated"> Highest Rated</label>
                                     </div>
                                 </div>
@@ -227,6 +199,133 @@
         </div>
         <!--end row-->
     </div>
+
+    {{-- Main Course Image Update --}}
+    <div class="page-content">
+        <div class="card">
+            <div class="card-body">
+                <form action="{{ route('update-course-image') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" name="id" value="{{ $course->id }}" />
+                    <input type="hidden" name="old_image" value="{{ $course->course_image }}" />
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="image" class="form-label">Image</label>
+                            <div class="position-relative input-icon">
+                                <input type="file" class="form-control" name="course_image" id="image"
+                                    placeholder="course image">
+                                <span class="position-absolute top-50 translate-middle-y"><i
+                                        class='bx bx-image'></i></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <img id="showImage" src="{{ asset($course->course_image) }}"
+                                class="rounded-circle p-1 bg-primary" width="110">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="d-md-flex d-grid align-items-center gap-3">
+                                <button type="submit" class="btn btn-primary px-4"><i class='bx bxs-save'></i>
+                                    Save</button>
+                                <button class="btn btn-light px-4"><i class='bx bx-reset'></i>
+                                    Reset</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {{-- end --}}
+
+    {{-- Main Course Video Update --}}
+    <div class="page-content">
+        <div class="card">
+            <div class="card-body">
+                <form action="{{ route('update-course-video') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" name="vid" value="{{ $course->id }}" />
+                    <input type="hidden" name="old_video" value="{{ $course->video }}" />
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="image" class="form-label">Video</label>
+                            <div class="position-relative input-icon">
+                                <input type="file" class="form-control" name="video" id="video"
+                                    accept="video/mp4, video/webm">
+                                <span class="position-absolute top-50 translate-middle-y"><i
+                                        class='bx bx-image'></i></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <video width="300" height="130" controls>
+                                <source src="{{ asset($course->video) }}" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="d-md-flex d-grid align-items-center gap-3">
+                                <button type="submit" class="btn btn-primary px-4"><i class='bx bxs-save'></i>
+                                    Save</button>
+                                <button class="btn btn-light px-4"><i class='bx bx-reset'></i>
+                                    Reset</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {{-- end --}}
+
+
+    {{-- Main Course goals Update --}}
+    <div class="page-content">
+        <div class="card">
+            <div class="card-body">
+                <form action="{{ route('update-course-goals') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" name="id" value="{{ $course->id }}" />
+
+                    @foreach ($CourseGoal as $goals)
+                        <div class="row add_item">
+                            <div class="whole_extra_item_delete" id="whole_extra_item_delete">
+                                <div class="container mt-2">
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <div class="mb-3">
+                                                <label for="goals" class="form-label"> Goals </label>
+                                                <input type="text" name="goal_name[]" id="goals"
+                                                    class="form-control" placeholder="Goals"
+                                                    value="{{ $goals->goal_name }}">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-2" style="padding-top: 30px;">
+                                            <a class="btn btn-success btn-sm addeventmore"><i class='bx bx-plus'></i></a>
+                                            <span class="btn btn-danger btn-sm removeeventmore"><i
+                                                    class='bx bx-trash'></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!---end row-->
+                    @endforeach
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="d-md-flex d-grid align-items-center gap-3">
+                                <button type="submit" class="btn btn-primary px-4"><i class='bx bxs-save'></i>
+                                    Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {{-- end --}}
 
 
     <!--========== Start of add multiple class with ajax ==============-->
