@@ -49,9 +49,13 @@
                                     <td>{{ $item->selling_price }}</td>
                                     <td>{{ $item->discount_price }}</td>
                                     <td>
-                                        <a href="{{ route('edit-course', $item->id) }}" class="btn btn-info btn-sm">Edit</a>
+                                        <a href="{{ route('edit-course', $item->id) }}" class="btn btn-info btn-sm"
+                                            title="Edit"><i class='bx bx-edit'></i></a>
                                         <a href="{{ route('delete-course', $item->id) }}" id="delete"
-                                            class="btn btn-danger btn-sm">Delete</a>
+                                            class="btn btn-danger btn-sm" title="Delete"><i class='bx bx-trash'></i></a>
+                                        <a href="{{ route('add-course-lecture', $item->id) }}"
+                                            class="btn btn-warning btn-sm" title="Lecture"><i
+                                                class='bx bx-list-plus'></i></a>
                                     </td>
 
                                 </tr>

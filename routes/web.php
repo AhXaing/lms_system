@@ -105,8 +105,15 @@ Route::middleware(['auth','roles:instructor'])->group(function(){
         Route::post('/update-course-video','UpdateCourseVideo')->name('update-course-video');
         Route::post('/update-course-goals','UpdateCourseGoals')->name('update-course-goals');
         Route::get('/delete-course/{id}','DeleteCourse')->name('delete-course');
-
     }); // end Course route
+
+    // Course Section & Lecture route
+    Route::controller(CourseController::class)->group(function(){       
+        Route::get('/add-course-lecture/{id}','AddCourseLecture')->name('add-course-lecture');
+        Route::post('/add-course-section','AddCourseSection')->name('add-course-section');
+        Route::post('/save-lecture','SaveLecture')->name('save-lecture');
+
+    }); // end Course Section & Lecture route
 
 });
 // end group instructor middleware

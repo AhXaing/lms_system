@@ -7,6 +7,8 @@ use App\Models\Category;
 use App\Models\SubCategory;
 use App\Models\Course;
 use App\Models\Course_goal;
+use App\Models\CourseSection;
+use App\Models\CourseLecture;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
 use Illuminate\Support\Facades\Auth;
@@ -245,4 +247,38 @@ class CourseController extends Controller
         );
         return redirect()->back()->with($notification);
     }//end method
+
+    public function AddCourseLecture($id){
+        $course = Course::find($id);
+        $section = CourseSection::where('course_id',$id)->latest()->get();
+        return view('instructor.course.section.add_course_lecture',compact('course','section'));
+    }//end method
+
+    public function AddCourseSection(Request $request){
+        $sid = $request->id;
+        CourseSection::insert([
+            'course_id'     => $sid,
+            'section_title' => $request->section_title,
+            'created_at'    => Carbon::now(),
+        ]);
+        $notification = array(
+            'message'       => 'Course Section Added Successfully.',
+            'alert-type'    => 'success'
+        );
+        return redirect()->back()->with($notification);
+    }//end method
+
+    public function SaveLecture(Request $request){
+        $lecture = new CourseLecture();
+        $lecture->course_id = $request->course_id;
+        $lecture->section_id = $request->section_id;
+        $lecture->lecture_title = $request->lecture_title;
+        $lecture->url = $request->url;
+        $lecture->content = $request->content;
+        $lecture->save();
+
+        return respone()->json(['success' => 'Lecture Saved Successfully.']);
+
+    }//end method
+
 }
