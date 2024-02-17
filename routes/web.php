@@ -112,6 +112,8 @@ Route::middleware(['auth','roles:instructor'])->group(function(){
         Route::get('/add-course-lecture/{id}','AddCourseLecture')->name('add-course-lecture');
         Route::post('/add-course-section','AddCourseSection')->name('add-course-section');
         Route::post('/save-lecture','SaveLecture')->name('save-lecture');
+        Route::get('/adit-lecture/{id}','EditLecture')->name('adit-lecture');
+        Route::post('/update-course-lecture','UpdateCourseLecture')->name('update-course-lecture');
 
     }); // end Course Section & Lecture route
 

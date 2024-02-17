@@ -9,4 +9,8 @@ class CourseSection extends Model
 {
     use HasFactory;
     protected $guarded=[];
+
+    public function lecture(){
+        return $this->hasMany(CourseLecture::class,'section_id');
+    }
 }

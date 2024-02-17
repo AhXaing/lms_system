@@ -43,16 +43,20 @@
 
                                         <div class="courseHide" id="lectureContainer{{ $key }}">
                                             <div class="container-flud m-5 mt-0 mb-0">
-                                                <div
-                                                    class="lectureDiv mb-3 d-flex align-items-center justify-content-between">
-                                                    <div>
-                                                        <strong>Lecture Title</strong>
+                                                @foreach ($item->lecture as $lecture)
+                                                    <div
+                                                        class="lectureDiv mb-3 d-flex align-items-center justify-content-between">
+                                                        <div>
+                                                            <strong>{{ $loop->iteration }} .
+                                                                {{ $lecture->lecture_title }}</strong>
+                                                        </div>
+                                                        <div class="btn-group">
+                                                            <a href="{{ route('adit-lecture', ['id' => $lecture->id]) }}"
+                                                                class="btn btn-sm btn-primary">Edit</a>&nbsp;
+                                                            <a href="" class="btn btn-sm btn-danger">Delete</a>
+                                                        </div>
                                                     </div>
-                                                    <div class="btn-group">
-                                                        <a href="" class="btn btn-sm btn-primary">Edit</a>&nbsp;
-                                                        <a href="" class="btn btn-sm btn-danger">Delete</a>
-                                                    </div>
-                                                </div>
+                                                @endforeach
 
                                             </div>
                                         </div>
@@ -151,13 +155,97 @@
                         content: lectureContent,
                     }),
                 })
-                .then(res => res.json())
+                .then(response => response.json())
                 .then(data => {
                     console.log(data);
+
+
+                    lectureContainer.style.display = 'none';
+                    location.reload();
+
+                    // Start Message 
+
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 6000
+                    })
+                    if ($.isEmptyObject(data.error)) {
+
+                        Toast.fire({
+                            type: 'success',
+                            title: data.success,
+                        })
+
+                    } else {
+
+                        Toast.fire({
+                            type: 'error',
+                            title: data.error,
+                        })
+                    }
+                    // End Message  
                 })
                 .catch(error => {
                     console.error(error);
                 });
         }
     </script>
+
+    {{-- <script>
+        function saveLecture(courseId, sectionId, containerId) {
+            const lectureContainer = document.getElementById(containerId);
+            const lectureTitle = lectureContainer.querySelector('input[type="text"]').value;
+            const lectureContent = lectureContainer.querySelector('textarea').value;
+            const lectureUrl = lectureContainer.querySelector('input[name="url"]').value;
+
+            fetch('/save-lecture', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                    },
+                    body: JSON.stringify({
+                        course_id: courseId,
+                        section_id: sectionId,
+                        lecture_title: lectureTitle,
+                        url: lectureUrl,
+                        content: lectureContent,
+                    }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+
+                    lectureContainer.style.display = 'none';
+                    location.reload();
+
+                    // Start Message 
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        icon: 'success',
+                        showConfirmButton: false,
+                        timer: 6000
+                    })
+                    if ($.isEmptyObject(data.error)) {
+                        Toast.fire({
+                            type: 'success',
+                            title: data.success,
+                        })
+                    } else {
+                        Toast.fire({
+                            type: 'error',
+                            title: data.error,
+                        })
+                    }
+                    // End Message  
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        }
+    </script> --}}
 @endsection
