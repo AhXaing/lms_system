@@ -288,7 +288,6 @@ class CourseController extends Controller
 
     public function UpdateCourseLecture(Request $request){
         $lid = $request->id;
-
         CourseLecture::find($lid)->update([
             'lecture_title'     => $request->lecture_title,
             'url'               => $request->url,
@@ -302,5 +301,29 @@ class CourseController extends Controller
         return redirect()->back()->with($notification);
 
     }//end method
+
+    public function DeleteCourseLecture($id){
+        CourseLecture::find($id)->delete();
+        $notification = array(
+            'message'       => 'Course Lecture deleted successfully.',
+            'alert-type'    => 'success'
+        );
+        return redirect()->back()->with($notification);
+    }//end method
+
+    public function DeleteSection($id){
+        $section = CourseSection::find($id);
+
+        //delete related lecture
+        $section->lecture()->delete();
+
+        //delete section
+        $section->delete();
+        $notification = array(
+            'message'       => 'Course Section deleted successfully.',
+            'alert-type'    => 'success'
+        );
+        return redirect()->back()->with($notification);
+    }
 
 }

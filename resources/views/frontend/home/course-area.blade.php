@@ -1,3 +1,8 @@
+@php
+    $course = App\Models\Course::where('status',1)->orderBy('id','ASC')->limit(6)->get();
+    $categories = App\Models\Category::orderBy('category_name','ASC')->get();
+@endphp
+
 <section class="course-area pb-120px">
     <div class="container">
         <div class="section-heading text-center">
@@ -8,24 +13,16 @@
         <ul class="nav nav-tabs generic-tab justify-content-center pb-4" id="myTab" role="tablist">
             <li class="nav-item">
                 <a class="nav-link active" id="business-tab" data-toggle="tab" href="#business" role="tab"
-                    aria-controls="business" aria-selected="true">Business</a>
+                    aria-controls="business" aria-selected="true">All</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" id="design-tab" data-toggle="tab" href="#design" role="tab"
-                    aria-controls="design" aria-selected="false">Design</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="development-tab" data-toggle="tab" href="#development" role="tab"
-                    aria-controls="development" aria-selected="false">Development</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="drawing-tab" data-toggle="tab" href="#drawing" role="tab"
-                    aria-controls="drawing" aria-selected="false">Drawing</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="marketing-tab" data-toggle="tab" href="#marketing" role="tab"
-                    aria-controls="marketing" aria-selected="false">Marketing</a>
-            </li>
+
+            @foreach ($categories as $cat)
+                <li class="nav-item">
+                    <a class="nav-link" id="business-tab" data-toggle="tab" href="#business" role="tab"
+                        aria-controls="business" aria-selected="false">{{$cat->category_name}}</a>
+                </li>                
+            @endforeach          
+          
         </ul>
     </div><!-- end container -->
     <div class="card-content-wrapper bg-gray pt-50px pb-120px">

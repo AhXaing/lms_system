@@ -114,6 +114,8 @@ Route::middleware(['auth','roles:instructor'])->group(function(){
         Route::post('/save-lecture','SaveLecture')->name('save-lecture');
         Route::get('/adit-lecture/{id}','EditLecture')->name('adit-lecture');
         Route::post('/update-course-lecture','UpdateCourseLecture')->name('update-course-lecture');
+        Route::get('/delete-lecture/{id}','DeleteCourseLecture')->name('delete-lecture');
+        Route::post('/delete-section/{id}','DeleteSection')->name('delete-section');
 
     }); // end Course Section & Lecture route
 

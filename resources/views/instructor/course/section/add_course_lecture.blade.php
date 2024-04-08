@@ -30,8 +30,12 @@
                                         <div class="card-body p-4 d-flex justify-content-between">
                                             <h6>{{ $item->section_title }}</h6>
                                             <div class="d-flex justify-content-between align-items-center">
-                                                <button type="submit" class="btn btn-danger px-2 ms-auto">Delete
-                                                    Section</button>
+                                                <form action="{{route('delete-section',['id'=> $item->id])}}" method="POST">
+                                                    @csrf
+                                                    
+                                                    <button type="submit" class="btn btn-danger px-2 ms-auto">Delete
+                                                        Section</button>
+                                                </form>
                                                 &nbsp;
                                                 <a class="btn btn-primary"
                                                     onclick="addLectureDiv({{ $course->id }},{{ $item->id }}, 'lectureContainer{{ $key }}')"
@@ -53,7 +57,7 @@
                                                         <div class="btn-group">
                                                             <a href="{{ route('adit-lecture', ['id' => $lecture->id]) }}"
                                                                 class="btn btn-sm btn-primary">Edit</a>&nbsp;
-                                                            <a href="" class="btn btn-sm btn-danger">Delete</a>
+                                                            <a href="{{ route('delete-lecture', ['id' => $lecture->id]) }}" class="btn btn-sm btn-danger" id="delete">Delete</a>
                                                         </div>
                                                     </div>
                                                 @endforeach

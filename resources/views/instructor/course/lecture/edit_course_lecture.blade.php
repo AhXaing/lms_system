@@ -46,7 +46,6 @@
                                         placeholder="Video Url" value="{{ $lecture->url }}">
                                 </div>
                             </div>
-
                             <div class="form-group col-md-12">
                                 <label for="content" class="form-label">Content</label>
                                 <div class="position-relative">
