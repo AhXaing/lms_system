@@ -216,233 +216,9 @@
                            </div>
                        </div><!-- end instructor-wrap -->
                    </div><!-- end course-overview-card -->
-                   <div class="course-overview-card pt-4">
-                       <h3 class="fs-24 font-weight-semi-bold pb-40px">Student feedback</h3>
-                       <div class="feedback-wrap">
-                           <div class="media media-card align-items-center">
-                               <div class="review-rating-summary">
-                                    <span class="stats-average__count">4.6</span>
-                                   <div class="rating-wrap pt-1">
-                                       <div class="review-stars">
-                                           <span class="la la-star"></span>
-                                           <span class="la la-star"></span>
-                                           <span class="la la-star"></span>
-                                           <span class="la la-star"></span>
-                                           <span class="la la-star-half-alt"></span>
-                                       </div>
-                                       <span class="rating-total d-block">(2,533)</span>
-                                       <span>Course Rating</span>
-                                   </div><!-- end rating-wrap -->
-                               </div><!-- end review-rating-summary -->
-                               <div class="media-body">
-                                   <div class="review-bars d-flex align-items-center mb-2">
-                                       <div class="review-bars__text">5 stars</div>
-                                       <div class="review-bars__fill">
-                                           <div class="skillbar-box">
-                                               <div class="skillbar" data-percent="77%">
-                                                   <div class="skillbar-bar bg-3"></div>
-                                               </div> <!-- End Skill Bar -->
-                                           </div>
-                                       </div><!-- end review-bars__fill -->
-                                       <div class="review-bars__percent">77%</div>
-                                   </div><!-- end review-bars -->
-                                   <div class="review-bars d-flex align-items-center mb-2">
-                                       <div class="review-bars__text">4 stars</div>
-                                       <div class="review-bars__fill">
-                                           <div class="skillbar-box">
-                                               <div class="skillbar" data-percent="54%">
-                                                   <div class="skillbar-bar bg-3"></div>
-                                               </div> <!-- End Skill Bar -->
-                                           </div>
-                                       </div><!-- end review-bars__fill -->
-                                       <div class="review-bars__percent">54%</div>
-                                   </div><!-- end review-bars -->
-                                   <div class="review-bars d-flex align-items-center mb-2">
-                                       <div class="review-bars__text">3 stars</div>
-                                       <div class="review-bars__fill">
-                                           <div class="skillbar-box">
-                                               <div class="skillbar" data-percent="14%">
-                                                   <div class="skillbar-bar bg-3"></div>
-                                               </div> <!-- End Skill Bar -->
-                                           </div>
-                                       </div><!-- end review-bars__fill -->
-                                       <div class="review-bars__percent">14%</div>
-                                   </div><!-- end review-bars -->
-                                   <div class="review-bars d-flex align-items-center mb-2">
-                                       <div class="review-bars__text">2 stars</div>
-                                       <div class="review-bars__fill">
-                                           <div class="skillbar-box">
-                                               <div class="skillbar" data-percent="5%">
-                                                   <div class="skillbar-bar bg-3"></div>
-                                               </div> <!-- End Skill Bar -->
-                                           </div>
-                                       </div><!-- end review-bars__fill -->
-                                       <div class="review-bars__percent">5%</div>
-                                   </div><!-- end review-bars -->
-                                   <div class="review-bars d-flex align-items-center mb-2">
-                                       <div class="review-bars__text">1 stars</div>
-                                       <div class="review-bars__fill">
-                                           <div class="skillbar-box">
-                                               <div class="skillbar" data-percent="2%">
-                                                   <div class="skillbar-bar bg-3"></div>
-                                               </div> <!-- End Skill Bar -->
-                                           </div>
-                                       </div><!-- end review-bars__fill -->
-                                       <div class="review-bars__percent">2%</div>
-                                   </div><!-- end review-bars -->
-                               </div><!-- end media-body -->
-                           </div>
-                       </div><!-- end feedback-wrap -->
-                   </div><!-- end course-overview-card -->
-                   <div class="course-overview-card pt-4">
-                       <h3 class="fs-24 font-weight-semi-bold pb-4">Reviews</h3>
-                       <div class="review-wrap">
-                           <div class="d-flex flex-wrap align-items-center pb-4">
-                               <form method="post" class="mr-3 flex-grow-1">
-                                   <div class="form-group">
-                                       <input class="form-control form--control pl-3" type="text" name="search" placeholder="Search reviews">
-                                       <span class="la la-search search-icon"></span>
-                                   </div>
-                               </form>
-                               <div class="select-container mb-3">
-                                   <select class="select-container-select">
-                                       <option value="all-rating">All ratings</option>
-                                       <option value="five-star">Five stars</option>
-                                       <option value="four-star">Four stars</option>
-                                       <option value="three-star">Three stars</option>
-                                       <option value="two-star">Two stars</option>
-                                       <option value="one-star">One star</option>
-                                   </select>
-                               </div>
-                           </div>
-                           <div class="media media-card border-bottom border-bottom-gray pb-4 mb-4">
-                               <div class="media-img mr-4 rounded-full">
-                                   <img class="rounded-full lazy" src="images/img-loading.png" data-src="images/small-avatar-1.jpg" alt="User image">
-                               </div>
-                               <div class="media-body">
-                                   <div class="d-flex flex-wrap align-items-center justify-content-between pb-1">
-                                       <h5>Kavi arasan</h5>
-                                       <div class="review-stars">
-                                           <span class="la la-star"></span>
-                                           <span class="la la-star"></span>
-                                           <span class="la la-star"></span>
-                                           <span class="la la-star"></span>
-                                           <span class="la la-star"></span>
-                                       </div>
-                                   </div>
-                                   <span class="d-block lh-18 pb-2">a month ago</span>
-                                   <p class="pb-2">This is one of the best courses I have taken in Udemy. It is very complete, and it has made continue learning about Java and SQL databases as well.</p>
-                                   <div class="helpful-action">
-                                       <span class="d-block fs-13">Was this review helpful?</span>
-                                       <button class="btn">Yes</button>
-                                       <button class="btn">No</button>
-                                       <span class="btn-text fs-14 cursor-pointer pl-1" data-toggle="modal" data-target="#reportModal">Report</span>
-                                   </div>
-                               </div>
-                           </div><!-- end media -->
-                           <div class="media media-card border-bottom border-bottom-gray pb-4 mb-4">
-                               <div class="media-img mr-4 rounded-full">
-                                   <img class="rounded-full lazy" src="images/img-loading.png" data-src="images/small-avatar-2.jpg" alt="User image">
-                               </div>
-                               <div class="media-body">
-                                   <div class="d-flex flex-wrap align-items-center justify-content-between pb-1">
-                                       <h5>Jitesh Shaw</h5>
-                                       <div class="review-stars">
-                                           <span class="la la-star"></span>
-                                           <span class="la la-star"></span>
-                                           <span class="la la-star"></span>
-                                           <span class="la la-star"></span>
-                                           <span class="la la-star"></span>
-                                       </div>
-                                   </div>
-                                   <span class="d-block lh-18 pb-2">1 months ago</span>
-                                   <p class="pb-2">This is one of the best courses I have taken in Udemy. It is very complete, and it has made continue learning about Java and SQL databases as well.</p>
-                                   <div class="helpful-action">
-                                       <span class="d-block fs-13">Was this review helpful?</span>
-                                       <button class="btn">Yes</button>
-                                       <button class="btn">No</button>
-                                       <span class="btn-text fs-14 cursor-pointer pl-1" data-toggle="modal" data-target="#reportModal">Report</span>
-                                   </div>
-                               </div>
-                           </div><!-- end media -->
-                           <div class="media media-card border-bottom border-bottom-gray pb-4 mb-4">
-                               <div class="media-img mr-4 rounded-full">
-                                   <img class="rounded-full lazy" src="images/img-loading.png" data-src="images/small-avatar-3.jpg" alt="User image">
-                               </div>
-                               <div class="media-body">
-                                   <div class="d-flex flex-wrap align-items-center justify-content-between pb-1">
-                                       <h5>Miguel Sanches</h5>
-                                       <div class="review-stars">
-                                           <span class="la la-star"></span>
-                                           <span class="la la-star"></span>
-                                           <span class="la la-star"></span>
-                                           <span class="la la-star"></span>
-                                           <span class="la la-star"></span>
-                                       </div>
-                                   </div>
-                                   <span class="d-block lh-18 pb-2">2 month ago</span>
-                                   <p class="pb-2">This is one of the best courses I have taken in Udemy. It is very complete, and it has made continue learning about Java and SQL databases as well.</p>
-                                   <div class="helpful-action">
-                                       <span class="d-block fs-13">Was this review helpful?</span>
-                                       <button class="btn">Yes</button>
-                                       <button class="btn">No</button>
-                                       <span class="btn-text fs-14 cursor-pointer pl-1" data-toggle="modal" data-target="#reportModal">Report</span>
-                                   </div>
-                               </div>
-                           </div><!-- end media -->
-                       </div><!-- end review-wrap -->
-                       <div class="see-more-review-btn text-center">
-                           <button type="button" class="btn theme-btn theme-btn-transparent">Load more reviews</button>
-                       </div>
-                   </div><!-- end course-overview-card -->
-                   <div class="course-overview-card pt-4">
-                       <h3 class="fs-24 font-weight-semi-bold pb-4">Add a Review</h3>
-                       <div class="leave-rating-wrap pb-4">
-                           <div class="leave-rating leave--rating">
-                               <input type="radio" name='rate' id="star5"/>
-                               <label for="star5"></label>
-                               <input type="radio" name='rate' id="star4"/>
-                               <label for="star4"></label>
-                               <input type="radio" name='rate' id="star3"/>
-                               <label for="star3"></label>
-                               <input type="radio" name='rate' id="star2"/>
-                               <label for="star2"></label>
-                               <input type="radio" name='rate' id="star1"/>
-                               <label for="star1"></label>
-                           </div><!-- end leave-rating -->
-                       </div>
-                       <form method="post" class="row">
-                           <div class="input-box col-lg-6">
-                               <label class="label-text">Name</label>
-                               <div class="form-group">
-                                   <input class="form-control form--control" type="text" name="name" placeholder="Your Name">
-                                   <span class="la la-user input-icon"></span>
-                               </div>
-                           </div><!-- end input-box -->
-                           <div class="input-box col-lg-6">
-                               <label class="label-text">Email</label>
-                               <div class="form-group">
-                                   <input class="form-control form--control" type="email" name="email" placeholder="Email Address">
-                                   <span class="la la-envelope input-icon"></span>
-                               </div>
-                           </div><!-- end input-box -->
-                           <div class="input-box col-lg-12">
-                               <label class="label-text">Message</label>
-                               <div class="form-group">
-                                   <textarea class="form-control form--control pl-3" name="message" placeholder="Write Message" rows="5"></textarea>
-                               </div>
-                           </div><!-- end input-box -->
-                           <div class="btn-box col-lg-12">
-                               <div class="custom-control custom-checkbox mb-3 fs-15">
-                                   <input type="checkbox" class="custom-control-input" id="saveCheckbox" required>
-                                   <label class="custom-control-label custom--control-label" for="saveCheckbox">
-                                       Save my name, and email in this browser for the next time I comment.
-                                   </label>
-                               </div><!-- end custom-control -->
-                               <button class="btn theme-btn" type="submit">Submit Review</button>
-                           </div><!-- end btn-box -->
-                       </form>
-                   </div><!-- end course-overview-card -->
+                   
+                  
+                 
                </div><!-- end course-details-content-wrap -->
            </div><!-- end col-lg-8 -->
             <div class="col-lg-4">
@@ -538,14 +314,10 @@
                             <h3 class="card-title fs-18 pb-2">Course Categories</h3>
                             <div class="divider"><span></span></div>
                             <ul class="generic-list-item">
-                                <li><a href="#">Development</a></li>
-                                <li><a href="#">Web Design</a></li>
-                                <li><a href="#">Technology</a></li>
-                                <li><a href="#">IT & Software</a></li>
-                                <li><a href="#">Backend</a></li>
-                                <li><a href="#">Marketing</a></li>
-                                <li><a href="#">Photography</a></li>
-                                <li><a href="#">Frontend</a></li>
+                               @foreach ($categories as $cate)  
+                                    <li><a href="{{ url('category/'.$cate->id.'/'.$cate->category_slug)}}">{{$cate->category_name}}</a></li>
+                               @endforeach
+                               
                             </ul>
                         </div>
                     </div><!-- end card -->
@@ -553,58 +325,29 @@
                         <div class="card-body">
                             <h3 class="card-title fs-18 pb-2">Related Courses</h3>
                             <div class="divider"><span></span></div>
-                            <div class="media media-card border-bottom border-bottom-gray pb-4 mb-4">
-                                <a href="course-details.html" class="media-img">
-                                    <img class="mr-3 lazy" src="images/img-loading.png" data-src="images/small-img-2.jpg" alt="Related course image">
-                                </a>
-                                <div class="media-body">
-                                    <h5 class="fs-15"><a href="course-details.html">The Complete JavaScript Course 2021</a></h5>
-                                    <span class="d-block lh-18 py-1 fs-14">Kamran Ahmed</span>
-                                    <p class="text-black font-weight-semi-bold lh-18 fs-15">$12.99 <span class="before-price fs-14">$129.99</span></p>
-                                </div>
-                            </div><!-- end media -->
-                            <div class="media media-card border-bottom border-bottom-gray pb-4 mb-4">
-                                <a href="course-details.html" class="media-img">
-                                    <img class="mr-3 lazy" src="images/img-loading.png" data-src="images/small-img-3.jpg" alt="Related course image">
-                                </a>
-                                <div class="media-body">
-                                    <h5 class="fs-15"><a href="course-details.html">Learning jQuery Mobile for Beginners</a></h5>
-                                    <span class="d-block lh-18 py-1 fs-14">Kamran Ahmed</span>
-                                    <p class="text-black font-weight-semi-bold lh-18 fs-15">$129.99</p>
-                                </div>
-                            </div><!-- end media -->
-                            <div class="media media-card border-bottom border-bottom-gray pb-4 mb-4">
-                                <a href="course-details.html" class="media-img">
-                                    <img class="mr-3 lazy" src="images/img-loading.png" data-src="images/small-img-4.jpg" alt="Related course image">
-                                </a>
-                                <div class="media-body">
-                                    <h5 class="fs-15"><a href="course-details.html">Introduction LearnPress – LMS plugin</a></h5>
-                                    <span class="d-block lh-18 py-1 fs-14">Kamran Ahmed</span>
-                                    <p class="text-black font-weight-semi-bold lh-18 fs-15">Free</p>
-                                </div>
-                            </div><!-- end media -->
+                            @foreach ($relatedCourse as $relatedCourse)
+                                <div class="media media-card border-bottom border-bottom-gray pb-4 mb-4">
+                                    <a href="{{url('course/details/'.$relatedCourse->id.'/'.$relatedCourse->course_name_slug)}}" class="media-img">
+                                        <img class="mr-3 lazy" src="{{asset($relatedCourse->course_image)}}" data-src="images/small-img-2.jpg" alt="Related course image">
+                                    </a>
+                                    <div class="media-body">
+                                        <h5 class="fs-15"><a href="{{url('course/details/'.$relatedCourse->id.'/'.$relatedCourse->course_name_slug)}}">{{$relatedCourse->course_name}}</a></h5>
+                                        <span class="d-block lh-18 py-1 fs-14">{{$relatedCourse['user']['name']}}</span>
+                                        @if ($relatedCourse->discount_price == NULL)
+                                            <p class="text-black font-weight-semi-bold lh-18 fs-15">${{$relatedCourse->selling_price}} <span class="before-price fs-14">${{$relatedCourse->discount_price}}</span></p>
+                                        @else
+                                            <p class="text-black font-weight-semi-bold lh-18 fs-15">${{$relatedCourse->discount_price}} <span class="before-price fs-14">${{$relatedCourse->selling_price}}</span></p>
+                                        @endif
+                                    </div>
+                                </div><!-- end media -->
+                            @endforeach
+                            
                             <div class="view-all-course-btn-box">
                                 <a href="course-grid.html" class="btn theme-btn w-100">View All Courses <i class="la la-arrow-right icon ml-1"></i></a>
                             </div>
                         </div>
                     </div><!-- end card -->
-                    <div class="card card-item">
-                        <div class="card-body">
-                            <h3 class="card-title fs-18 pb-2">Course Tags</h3>
-                            <div class="divider"><span></span></div>
-                            <ul class="generic-list-item generic-list-item-boxed d-flex flex-wrap fs-15">
-                                <li class="mr-2"><a href="#">Beginner</a></li>
-                                <li class="mr-2"><a href="#">Advanced</a></li>
-                                <li class="mr-2"><a href="#">Tips</a></li>
-                                <li class="mr-2"><a href="#">Photoshop</a></li>
-                                <li class="mr-2"><a href="#">Software</a></li>
-                                <li class="mr-2"><a href="#">Backend</a></li>
-                                <li class="mr-2"><a href="#">Freelance</a></li>
-                                <li class="mr-2"><a href="#">Frontend</a></li>
-                                <li class="mr-2"><a href="#">Technology</a></li>
-                            </ul>
-                        </div>
-                    </div><!-- end card -->
+                  
                 </div><!-- end sidebar -->
             </div><!-- end col-lg-4 -->
         </div><!-- end row -->
@@ -688,38 +431,6 @@
         END RELATED COURSE AREA
 ======================================-->
 
-<!--======================================
-        START CTA AREA
-======================================-->
-<section class="cta-area pt-60px pb-60px position-relative overflow-hidden">
-    <span class="stroke-shape stroke-shape-1"></span>
-    <span class="stroke-shape stroke-shape-2"></span>
-    <span class="stroke-shape stroke-shape-3"></span>
-    <span class="stroke-shape stroke-shape-4"></span>
-    <span class="stroke-shape stroke-shape-5"></span>
-    <span class="stroke-shape stroke-shape-6"></span>
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-9">
-                <div class="cta-content-wrap py-4 d-flex flex-wrap align-items-center">
-                    <svg class="flex-shrink-0 mr-4" width="70" viewBox="0 -48 496 496" xmlns="http://www.w3.org/2000/svg"><path d="m472 0h-448c-13.230469 0-24 10.769531-24 24v352c0 13.230469 10.769531 24 24 24h448c13.230469 0 24-10.769531 24-24v-352c0-13.230469-10.769531-24-24-24zm8 376c0 4.414062-3.59375 8-8 8h-448c-4.40625 0-8-3.585938-8-8v-352c0-4.40625 3.59375-8 8-8h448c4.40625 0 8 3.59375 8 8zm0 0"></path><path d="m448 32h-400v240h400zm-16 224h-368v-208h368zm0 0"></path><path d="m328 200.136719c0-17.761719-11.929688-33.578125-29.007812-38.464844l-26.992188-7.703125v-2.128906c9.96875-7.511719 16-19.328125 16-31.832032v-14.335937c0-21.503906-16.007812-39.726563-36.449219-41.503906-11.183593-.96875-22.34375 2.800781-30.574219 10.351562-8.25 7.550781-12.976562 18.304688-12.976562 29.480469v16c0 12.503906 6.03125 24.328125 16 31.832031v2.128907l-26.992188 7.710937c-17.078124 4.886719-29.007812 20.703125-29.007812 38.464844v39.863281h160zm-16 23.863281h-128v-23.863281c0-10.664063 7.160156-20.152344 17.40625-23.082031l38.59375-11.023438v-23.070312l-3.976562-2.3125c-7.527344-4.382813-12.023438-12.105469-12.023438-20.648438v-16c0-6.703125 2.839844-13.160156 7.792969-17.695312 5.007812-4.601563 11.496093-6.832032 18.382812-6.207032 12.230469 1.0625 21.824219 12.285156 21.824219 25.566406v14.335938c0 8.542969-4.496094 16.265625-12.023438 20.648438l-3.976562 2.3125v23.070312l38.59375 11.023438c10.246094 2.9375 17.40625 12.425781 17.40625 23.082031zm0 0"></path><path d="m32 364.945312 73.886719-36.945312-73.886719-36.945312zm16-48 22.113281 11.054688-22.113281 11.054688zm0 0"></path><path d="m152 288h16v80h-16zm0 0"></path><path d="m120 288h16v80h-16zm0 0"></path><path d="m336 288h-48v32h-104v16h104v32h48v-32h128v-16h-128zm-16 64h-16v-48h16zm0 0"></path></svg>
-                    <div class="section-heading">
-                        <h2 class="section__title mb-1 fs-22">Become a Teacher, Share your knowledge</h2>
-                        <p class="section__desc">Create an online video course, reach students across the globe, and earn money</p>
-                    </div><!-- end section-heading -->
-                </div>
-            </div><!-- end col-lg-9 -->
-            <div class="col-lg-3">
-                <div class="cta-btn-box text-right">
-                    <a href="become-a-teacher.html" class="btn theme-btn">Tech on Aduca <i class="la la-arrow-right icon ml-1"></i> </a>
-                </div>
-            </div><!-- end col-lg-3 -->
-        </div><!-- end row -->
-    </div><!-- end container -->
-</section><!-- end cta-area -->
-<!--======================================
-        END CTA AREA
-======================================-->
 
 
 
