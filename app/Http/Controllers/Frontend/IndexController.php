@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\SubCategory;
 use App\Models\Course;
+use App\Models\User;
 use App\Models\Course_goal;
 use App\Models\CourseSection;
 use App\Models\CourseLecture;
@@ -43,5 +44,25 @@ class IndexController extends Controller
 
 
     }//end method
+
+    public function SubCategoryCourse($id,$slug){
+        $course = Course::where('subcategory_id',$id)->where('status',1)->get();
+        $subcategory = SubCategory::where('id',$id)->first();
+
+        $categories = Category::latest()->get();
+
+        return view('frontend.category.subcategory_all', compact('course','subcategory','categories'));
+
+    }//end method
+
+    public function InstructorDetails($id){
+        $instructor = User::find($id);
+        $course = Course::where('instructor_id', $id)->get();
+
+        return view('frontend.instructor.instructor_details', compact('course','instructor'));
+
+
+
+    } //end method
 
 }
