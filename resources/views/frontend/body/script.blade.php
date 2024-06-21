@@ -29,13 +29,13 @@
                         })
                 }else{                
                 Toast.fire({
-                        type: 'error',
-                        icon: 'error', 
-                        title: data.error, 
-                        })
-                    }
-                // End Message   
+                    type: 'error',
+                    icon: 'error', 
+                    title: data.error, 
+                })
                 }
+                // End Message   
+            }
         })
     }
 
