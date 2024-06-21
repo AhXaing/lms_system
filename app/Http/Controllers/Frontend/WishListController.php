@@ -33,4 +33,8 @@ class WishListController extends Controller
             return response()->json(['error' => 'At First Login Your Account']);
         }
     }
+
+    public function AllWishlist(){
+        
+    }
 }

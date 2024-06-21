@@ -39,7 +39,18 @@ Route::middleware('auth')->group(function () {
     Route::get('/user/change-password', [UserController::class, 'UserChangePassword'])->name('user.change-password');
     Route::post('/user/update-password', [UserController::class, 'UserUpdatePassword'])->name('user.update-password');
 
+
+    // 
+    // user wishlist
+    Route::controller(WishListController::class)->group(function(){
+        Route::get('/all-wishlist','AllWishlist')->name('all-wishlist');
+       return view('frontend.wishlist.all_wishlist') ;
+    });
+    // end method
+
 });
+
+// end auth middleware
 
 require __DIR__.'/auth.php';
 
